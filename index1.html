@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delhi: A Journey Through Time</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      scroll-behavior: smooth;
+    }
+    section {
+      padding: 4rem 5%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-bottom: 2px solid #eee;
+    }
+    h2 {
+      margin-bottom: 1rem;
+      color: #203a43;
+      font-size: 2rem;
+      animation: fadeIn 1s ease forwards;
+    }
+    p, ul, table {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    .chart-container { width: 100%; margin-top: 2rem; }
+    canvas {
+      background-color: #fff;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .zone-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .zone-table th, .zone-table td {
+      border: 1px solid #ccc;
+      padding: 0.8rem;
+      text-align: left;
+    }
+    .zone-table th {
+      background-color: #eee;
+    }
+    footer {
+      background-color: #203a43;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="section" id="intro">
+    <h1>Delhi: From Past to Present</h1>
+    <p>Discover the incredible transformation of Delhi over 1000 years — from ancient empires to modern megacity.</p>
+</div>
+
+<div class="section" id="ancient-delhi">
+    <h2>Ancient Delhi</h2>
+    <p>Once known as Indraprastha in Mahabharata, Delhi's earliest settlements trace back to 6th century BCE.</p>
+</div>
+
+<div class="section" id="mughal-era">
+    <h2>Mughal Delhi</h2>
+    <p>Delhi flourished under Mughal rule — Shahjahanabad became the capital, now known as Old Delhi.</p>
+</div>
+
+<div class="section" id="british-delhi">
+    <h2>British Raj & New Delhi</h2>
+    <p>In 1911, the British moved their capital from Calcutta to Delhi, designing Lutyens' Delhi as a symbol of empire.</p>
+</div>
+
+<div class="section" id="modern-delhi">
+    <h2>Modern Delhi</h2>
+    <p>Post-independence saw urban expansion, population explosion, and modernization — but also new challenges.</p>
+</div>
+
+<div class="section" id="dda-mcd">
+    <h2>DDA & MCD Governance</h2>
+    <p>DDA (since 1957) and MCD (since 1958) have led housing, planning, and municipal development. Still, infrastructure struggles remain.</p>
+</div>
+
+<div class="section" id="problems-stats">
+    <h2>Present-Day Challenges</h2>
+    <canvas id="airChart" width="600" height="400"></canvas>
+    <canvas id="crimeChart" width="600" height="400"></canvas>
+</div>
+
+<div class="section" id="future-vision">
+    <h2>Delhi's Future</h2>
+    <p>Smart city initiatives, metro expansion, clean energy, and sustainable water supply aim to redefine Delhi's next century.</p>
+</div>
+
+
+
+
+
+
+<style>
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    color: #333;
+}
+.section {
+    padding: 100px 60px;
+    border-bottom: 1px solid #ccc;
+    background: white;
+}
+h1, h2 {
+    color: #1e3a5f;
+}
+canvas {
+    margin: 40px auto;
+    display: block;
+}
+</style>
+
+<app.py
+from flask import Flask, render_template, jsonify
+import json
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return render_template("index.html")
+
+@app.route('/api/data')
+def api_data():
+    with open("data/delhi_stats.json") as f:
+        stats = json.load(f)
+    return jsonify(stats)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+</app.py>
+
+
+
+
+  <section>
+    <h2>Delhi: A Historical Overview</h2>
+    <p>From Indraprastha (Mahabharata era) through Mughals, British Raj to post-Independence modernity, Delhi has witnessed massive transformations across culture, administration, architecture, and demographics.</p>
+  </section>
+
+  <section>
+    <h2>Governance Structures</h2>
+    <p>The Delhi Development Authority (DDA) manages urban planning. The MCD handles services for 90% of the city, and NDMC manages Lutyens' zone and VIP areas. Administrative restructuring in 2012 and reunification in 2022 mark governance evolution.</p>
+  </section>
+
+  <section>
+    <h2>Demographics & Urban Expansion</h2>
+    <div class="chart-container">
+      <canvas id="populationChart"></canvas>
+    </div>
+    <p>Delhi's population has surged from 1.4M in 1951 to 32M+ in 2024 due to rural migration, economic opportunities, and urban sprawl.</p>
+  </section>
+
+  <section>
+    <h2>Living Conditions by Zones</h2>
+    <table class="zone-table">
+      <thead><tr><th>Zone</th><th>Water</th><th>Electricity</th><th>Air Quality</th><th>Crime Rate</th></tr></thead>
+      <tbody>
+        <tr><td>South Delhi</td><td>24/7</td><td>Uninterrupted</td><td>Moderate</td><td>Low</td></tr>
+        <tr><td>East Delhi</td><td>4-6 hrs</td><td>Mostly Stable</td><td>Poor</td><td>High</td></tr>
+        <tr><td>North-East Delhi</td><td>2 hrs</td><td>Frequent Cuts</td><td>Severe</td><td>Very High</td></tr>
+        <tr><td>Central Delhi</td><td>24/7</td><td>Uninterrupted</td><td>Moderate</td><td>Low</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Water Access Distribution</h2>
+    <div class="chart-container">
+      <canvas id="waterPie"></canvas>
+    </div>
+  </section>
+
+  <section>
+    <h2>Air Quality Index by Region (2024)</h2>
+    <div class="chart-container">
+      <canvas id="airChart"></canvas>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 | Delhi Historical & Civic Research</p>
+  </footer>
+
+  <script>
+    new Chart(document.getElementById('populationChart'), {
+      type: 'bar',
+      data: {
+        labels: ['1951', '1981', '2001', '2021', '2024'],
+        datasets: [{ label: 'Population (M)', data: [1.4, 5.5, 13.8, 30.3, 32], backgroundColor: '#2c3e50' }]
+      }
+    });
+
+    new Chart(document.getElementById('waterPie'), {
+      type: 'pie',
+      data: {
+        labels: ['South', 'East', 'North-East', 'Central'],
+        datasets: [{ label: 'Water Access %', data: [100, 60, 30, 100], backgroundColor: ['#1abc9c','#f39c12','#e74c3c','#3498db'] }]
+      }
+    });
+
+    new Chart(document.getElementById('airChart'), {
+      type: 'bar',
+      data: {
+        labels: ['South Delhi', 'East Delhi', 'North-East Delhi', 'Central Delhi'],
+        datasets: [{ label: 'AQI', data: [220, 310, 400, 230], backgroundColor: '#8e44ad' }]
+      }
+    });
+  </script>
+</body>
+
+</html>

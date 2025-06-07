@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delhi: A Journey Through Time</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      scroll-behavior: smooth;
+    }
+    section {
+      padding: 4rem 5%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-bottom: 2px solid #eee;
+    }
+    h1 {
+        font-size: 2.5rem;
+        text-align:center;
+    }
+    h2 {
+      margin-bottom: 1rem;
+      color: #203a43;
+      font-size: 2rem;
+      animation: fadeIn 1s ease forwards;
+    }
+    p, ul, table {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    .chart-container { width: 100%; margin-top: 2rem; }
+    canvas {
+      background-color: #fff;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .zone-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .zone-table th, .zone-table td {
+      border: 1px solid #ccc;
+      padding: 0.8rem;
+      text-align: left;
+    }
+    .zone-table th {
+      background-color: #eee;
+    }
+    footer {
+      background-color: #203a43;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+    form input, form textarea, form button {
+      font-size: 1rem;
+      padding: 0.75rem;
+      margin: 0.5rem 0;
+      width: 100%;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+  <section style="background-image: url('India-gate-Cover-page.webp'); background-size: cover; background-position: center; color: white;">
+  <h2>Delhi: A Historical Overview</h2>
+  <p>Delhi, with roots tracing back to the epic Mahabharata as Indraprastha, has served as a seat of power for several empires — Rajputs, Delhi Sultanate, Mughals, and the British. Its modern incarnation began post-1947, when it became the capital of independent India.</p>
+  </section></p>
+
+
+
+  <section> 
+    <div class = "section" id - "ancient-delhi">
+    <h1><b>Delhi: From Past to Present</b></h1>
+    <p> Delhi is a place where ancient kings once ruled, where battles were fought, and where dreams were built and broken.
+From the stories of Indraprastha in the Mahabharata, to the mighty Mughals and later the British, Delhi has seen everything — love, pain, power, and freedom.
+Every street, every stone in Delhi has a story to tell. The Red Fort, Qutub Minar, India Gate, and Humayun’s Tomb — they’re not just buildings, they’re memories frozen in time.
+After independence, Delhi grew fast. More people came in. Big roads, metros, buildings, malls — the city kept changing. But deep down, it still carries its soul — old, raw, honest.
+Delhi is a mix of everything — rich and poor, chaos and calm, past and future. It’s where people come with nothing and build a life.
+
+Discover the incredible transformation of Delhi over 1000 years — from ancient empires to modern megacity.
+    </p>
+</div>
+</div>
+
+<div class="section" id="ancient-delhi">
+    <h2>Ancient Delhi</h2>
+    <p>Once known as Indraprastha in Mahabharata, Delhi's earliest settlements trace back to 6th century BCE.</p>
+</div>
+
+<div class="section" id="mughal-era">
+    <h2>Mughal Delhi</h2>
+    <p>Delhi flourished under Mughal rule — Shahjahanabad became the capital, now known as Old Delhi.</p>
+</div>
+
+<div class="section" id="british-delhi">
+    <h2>British Raj & New Delhi</h2>
+    <p>In 1911, the British moved their capital from Calcutta to Delhi, designing Lutyens' Delhi as a symbol of empire.</p>
+</div>
+
+<div class="section" id="modern-delhi">
+    <h2>Modern Delhi</h2>
+    <p>Post-independence saw urban expansion, population explosion, and modernization — but also new challenges.</p>
+</div>
+
+<div class="section" id="dda-mcd">
+    <h2>Administrative Bodies</h2>
+    <p><h3>DDA & MCD Governance</h3>
+    <p>The Delhi Development Authority (DDA) plans infrastructure and housing. The Municipal Corporation of Delhi (MCD) governs most civic functions. The NDMC governs central VIP zones. Reunification of MCD in 2022 streamlined many services. 
+    DDA (since 1957) and MCD (since 1958) have led housing, planning, and municipal development. Still, infrastructure struggles remain.</p>
+</div>
+
+<div class="section" id="problems-stats">
+    <h2>Present-Day Challenges</h2>
+    <canvas id="airChart" width="600" height="400"></canvas>
+    <canvas id="crimeChart" width="600" height="400"></canvas>
+</div>
+
+<div class="section" id="future-vision">
+    <h2>Delhi's Future</h2>
+    <p>Smart city initiatives, metro expansion, clean energy, and sustainable water supply aim to redefine Delhi's next century.</p>
+</div>
+  </section>
+  
+
+  <section>
+    <h2>Population Growth</h2>
+    <p>In 1951, Delhi's population was 1.4 million. Today, it exceeds 32 million, making it one of the most densely populated cities globally.</p>
+    <div class="chart-container">
+      <canvas id="populationChart"></canvas>
+    </div>
+  </section>
+
+  <section>
+    <h2>Zone-wise Living Conditions (2024)</h2>
+    <table class="zone-table">
+      <thead><tr><th>Zone</th><th>Water</th><th>Electricity</th><th>Air Quality</th><th>Crime Rate</th><th>Living Condition</th></tr></thead>
+      <tbody>
+        <tr><td>South Delhi</td><td>24/7</td><td>Stable</td><td>Moderate (AQI 220)</td><td>Low</td><td>Posh</td></tr>
+        <tr><td>East Delhi</td><td>4-6 hrs/day</td><td>Intermittent</td><td>Poor (AQI 310)</td><td>High</td><td>Middle-Class</td></tr>
+        <tr><td>North-East Delhi</td><td>2 hrs/day</td><td>Frequent Cuts</td><td>Severe (AQI 400)</td><td>Very High</td><td>Underdeveloped</td></tr>
+        <tr><td>Central Delhi</td><td>24/7</td><td>Stable</td><td>Moderate (AQI 230)</td><td>Low</td><td>VIP/Administrative</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Water Supply Access (2024)</h2>
+    <div class="chart-container">
+      <canvas id="waterPie"></canvas>
+    </div>
+  </section>
+
+  <section>
+    <h2>Air Quality Index Distribution</h2>
+    <img src = "Delhi-AQI-distribution.jpg">
+  </section>
+
+  <section>
+    <h2>Electricity Stability Comparison</h2>
+    <div class="chart-container">
+      <canvas id="powerChart"></canvas>
+    </div>
+  </section>
+
+  <section>
+    <h2>Crime Genre in Delhi(Last 10 years)</h2>
+    <img src = "Crime-report-delhi.jpeg">
+  </section>
+
+  <section>
+    <h2>User Feedback</h2>
+    <form action="/submit" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="4" placeholder="Your feedback" required></textarea>
+      <button type="submit">Submit Feedback</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Delhi History Research & Civic Insights| By Gaurav & Jatin</p>
+  </footer>
+
+  <script>
+    new Chart(document.getElementById('populationChart'), {
+      type: 'bar',
+      data: {
+        labels: ['1951', '1981', '2001', '2021', '2024'],
+        datasets: [{ label: 'Population (Millions)', data: [1.4, 5.5, 13.8, 30.3, 32], backgroundColor: '#34495e' }]
+      }
+    });
+
+    new Chart(document.getElementById('waterPie'), {
+      type: 'pie',
+      data: {
+        labels: ['South', 'East', 'North-East', 'Central'],
+        datasets: [{ label: 'Water Access %', data: [100, 60, 30, 100], backgroundColor: ['#1abc9c','#f39c12','#e74c3c','#3498db'] }]
+      }
+    });
+
+    new Chart(document.getElementById('airChart'), {
+      type: 'bar',
+      data: {
+        labels: ['South', 'East', 'North-East', 'Central'],
+        datasets: [{ label: 'AQI (2024)', data: [220, 310, 400, 230], backgroundColor: '#9b59b6' }]
+      }
+    });
+
+    new Chart(document.getElementById('powerChart'), {
+      type: 'bar',
+      data: {
+        labels: ['South', 'East', 'North-East', 'Central'],
+        datasets: [{ label: 'Hours without electricity/month', data: [2, 15, 50, 1], backgroundColor: '#e67e22' }]
+      }
+    });
+
+    new Chart(document.getElementById('crimeChart'), {
+      type: 'bar',
+      data: {
+        labels: ['South', 'East', 'North-East', 'Central'],
+        datasets: [{ label: 'Crimes per 10,000 people', data: [20, 70, 120, 25], backgroundColor: '#c0392b' }]
+      }
+    });
+  </script>
+</body>
+</html>
